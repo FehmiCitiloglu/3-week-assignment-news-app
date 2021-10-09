@@ -1,43 +1,50 @@
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { Image, List } from "antd-mobile";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { fetchNews } from "../store/actions/fetch-news";
 import store from "../store/index";
 
 const CategoryNews = (props) => {
   const { category } = useParams();
-  const [news, setNews] = useState([]);
+  const [newsData, setNewsData] = useState([]);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setNews(dispatch(fetchNews(category)));
-    // store.getState();
-  }, [dispatch]);
+    dispatch(fetchNews(category));
+  }, [dispatch, category]);
 
-  console.log(news);
+  console.log(store.getState());
 
+  store.subscribe(() => {
+    setNewsData(store.getState());
+  });
+
+  // const newsData = useSelector((state) => state.news);
+
+  console.log(typeof newsData);
+  console.log(newsData);
+  // console.log(handleNewsData);
   return (
     <div>
       <List>
-        {/* {users.map((user) => (
+        {newsData.map((news) => (
           <List.Item
-            key={user.name}
+            key={news.source.id}
             prefix={
               <Image
-                src={user.avatar}
+                src={news.urlToImage}
                 style={{ borderRadius: 20 }}
                 fit="cover"
                 width={40}
                 height={40}
               />
             }
-            description={user.description}
+            description={news.description}
           >
-            {user.name}
+            <a href={news.url}>{news.title}</a>
           </List.Item>
-        ))} */}
-        {category}
+        ))}
       </List>
     </div>
   );

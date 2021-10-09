@@ -7,8 +7,9 @@ export const fetchNews = (category) => {
     // const response = await axios(`${BASE_URL}&q=${category}&apiKey=${API_KEY}`);
     const response = await axios(`${BASE_URL}&q=${category}&apiKey=${API_KEY}`);
     console.log(response);
-    const data = await response.articles;
-    console.log(data);
-    dispatch(loadedNews(data));
+    const data = await response.data;
+    console.log(data.articles);
+    dispatch(loadedNews({ news: data.articles }));
+    return data;
   };
 };
