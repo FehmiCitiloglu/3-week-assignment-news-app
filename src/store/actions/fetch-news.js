@@ -9,7 +9,7 @@ export const fetchNews = (category) => {
     console.log(response);
     const data = await response.data;
     console.log(data.articles);
-    dispatch(loadedNews({ news: data.articles }));
+    dispatch(loadedNews(data.articles));
     return data;
   };
 };

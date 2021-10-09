@@ -17,7 +17,7 @@ const CategoryNews = (props) => {
   console.log(store.getState());
 
   store.subscribe(() => {
-    setNewsData(store.getState());
+    setNewsData(store.getState().news);
   });
 
   // const newsData = useSelector((state) => state.news);
