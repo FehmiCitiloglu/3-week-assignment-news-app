@@ -2,6 +2,7 @@
 import { Image, Space } from "antd-mobile";
 //import { DemoBlock } from "demos";
 import { Link } from "react-router-dom";
+import MyNavbar from "../components/UI/MyNavbar";
 
 const Categories = (props) => {
   // deneme amaçlı api
@@ -63,6 +64,9 @@ const Categories = (props) => {
 
   return (
     <div>
+      <MyNavbar backArrow={false} isCategory={true}>
+        Haber Kategorileri
+      </MyNavbar>
       <div>
         <Space wrap>{categories}</Space>
       </div>

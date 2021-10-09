@@ -4,6 +4,7 @@ import { Image, List } from "antd-mobile";
 import { useDispatch } from "react-redux";
 import { fetchNews } from "../store/actions/fetch-news";
 import store from "../store/index";
+import MyNavbar from "../components/UI/MyNavbar";
 
 const CategoryNews = (props) => {
   const { category } = useParams();
@@ -27,6 +28,7 @@ const CategoryNews = (props) => {
   // console.log(handleNewsData);
   return (
     <div>
+      <MyNavbar isCategory={false}>{category} Haberleri</MyNavbar>
       <List>
         {newsData.map((news) => (
           <List.Item
