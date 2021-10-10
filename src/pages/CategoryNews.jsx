@@ -36,10 +36,10 @@ const CategoryNews = (props) => {
             prefix={
               <Image
                 src={news.urlToImage}
-                style={{ borderRadius: 20 }}
+                style={{ borderRadius: 10, top: 1 }}
                 fit="cover"
-                width={40}
-                height={40}
+                width={60}
+                height={60}
               />
             }
             description={news.description}
